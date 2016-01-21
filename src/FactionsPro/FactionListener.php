@@ -1,6 +1,6 @@
 <?php
 
-namespace FactionsPro;
+namespace EnderFactions;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
@@ -34,7 +34,7 @@ class FactionListener implements Listener {
 		//TODO Use arrays instead of database for faster chatting?
 		
 		if($this->plugin->motdWaiting($player)) {
-			if(time() - $this->plugin->getMOTDTime($player) > 30) {
+			if(time() - $this->plugin->getMOTDTime($player) > 90) {
 				$PCE->getPlayer()->sendMessage($this->plugin->formatMessage("Timed out. Please use /f motd again."));
 				$this->plugin->db->query("DELETE FROM motdrcv WHERE player='$player';");
 				$PCE->setCancelled(true);
