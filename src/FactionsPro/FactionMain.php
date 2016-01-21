@@ -1,6 +1,6 @@
 <?php
 
-namespace FactionsPro;
+namespace EnderFactions;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
@@ -67,7 +67,7 @@ class FactionMain extends PluginBase implements Listener {
 						"unsethome" => true
 				)
 		));
-		$this->db = new \SQLite3($this->getDataFolder() . "FactionsPro.db");
+		$this->db = new \SQLite3($this->getDataFolder() . "EnderFactions.db");
 		$this->db->exec("CREATE TABLE IF NOT EXISTS master (player TEXT PRIMARY KEY COLLATE NOCASE, faction TEXT, rank TEXT);");
 		$this->db->exec("CREATE TABLE IF NOT EXISTS confirm (player TEXT PRIMARY KEY COLLATE NOCASE, faction TEXT, invitedby TEXT, timestamp INT);");
 		$this->db->exec("CREATE TABLE IF NOT EXISTS motdrcv (player TEXT PRIMARY KEY, timestamp INT);");
@@ -213,9 +213,9 @@ public function newPlot($faction, $x1, $z1, $x2, $z2) {
 	
 	public function formatMessage($string, $confirm = false) {
 		if($confirm) {
-			return "[" . TextFormat::BLUE . "FactionsPro" . TextFormat::WHITE . "] " . TextFormat::GREEN . "$string";
+			return "[" . TextFormat::PURPLE . "EnderFactions" . TextFormat::WHITE . "] " . TextFormat::GREEN . "$string";
 		} else {	
-			return "[" . TextFormat::BLUE . "FactionsPro" . TextFormat::WHITE . "] " . TextFormat::RED . "$string";
+			return "[" . TextFormat::PURPLE . "EnderFactions" . TextFormat::WHITE . "] " . TextFormat::RED . "$string";
 		}
 	}
 	
