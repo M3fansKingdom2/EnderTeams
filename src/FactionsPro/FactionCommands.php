@@ -1,6 +1,6 @@
 <?php
 
-namespace FactionsPro;
+namespace EnderFactions;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
@@ -554,7 +554,7 @@ class FactionCommands {
 					/////////////////////////////// ABOUT ///////////////////////////////
 					
 					if(strtolower($args[0] == 'about')) {
-						$sender->sendMessage(TextFormat::BLUE . "FactionsPro v1.4.0 BETA by " . TextFormat::BOLD . "Tethered_\n" . TextFormat::RESET . TextFormat::BLUE . "Twitter: " . TextFormat::ITALIC . "@Tethered_");
+						$sender->sendMessage(TextFormat::BLUE . "EnderFactions v1.4.0 BETA";
 					}
 				}
 			}
