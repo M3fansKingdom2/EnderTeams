@@ -1,6 +1,6 @@
 <?php
 
-namespace EnderFactions;
+namespace EnderTeams;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
@@ -29,7 +29,7 @@ class FactionCommands {
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
 		if($sender instanceof Player) {
 			$player = $sender->getPlayer()->getName();
-			if(strtolower($command->getName('f'))) {
+			if(strtolower($command->getName('t'))) {
 				if(empty($args)) {
 					$sender->sendMessage($this->plugin->formatMessage("Please use /f help for a list of commands"));
 					return true;
@@ -40,7 +40,7 @@ class FactionCommands {
 					
 					if($args[0] == "create") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /f create <faction name>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /t create <faction name>"));
 							return true;
 						}
 						if(!(ctype_alnum($args[1]))) {
@@ -83,7 +83,7 @@ class FactionCommands {
 					
 					if($args[0] == "invite") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /f invite <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /t invite <player>"));
 							return true;
 						}
 						if(!$this->plugin->isInFaction($player)) {
@@ -126,7 +126,7 @@ class FactionCommands {
 					
 					if($args[0] == "leader") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /f leader <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /t leader <player>"));
 							return true;
 						}
 						if(!$this->plugin->isInFaction($sender->getName())) {
@@ -173,7 +173,7 @@ class FactionCommands {
 					
 					if($args[0] == "promote") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /f promote <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /t promote <player>"));
 							return true;
 						}
 						if(!$this->plugin->isInFaction($sender->getName())) {
@@ -212,7 +212,7 @@ class FactionCommands {
 					
 					if($args[0] == "demote") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /f demote <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /t demote <player>"));
 							return true;
 						}
 						if($this->plugin->isInFaction($sender->getName()) == false) {
@@ -252,7 +252,7 @@ class FactionCommands {
 					
 					if($args[0] == "kick") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /f kick <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /t kick <player>"));
 							return true;
 						}
 						if($this->plugin->isInFaction($sender->getName()) == false) {
@@ -318,14 +318,14 @@ class FactionCommands {
 					}
 					if(strtolower($args[0]) == "help") {
 						if(!isset($args[1]) || $args[1] == 1) {
-							$sender->sendMessage(TextFormat::PURPLE . "EnderFactions Help Page 1 of 3" . TextFormat::RED . "\n/f about\n/f accept\n/f claim\n/f create <name>\n/f del\n/f demote <player>\n/f deny");
+							$sender->sendMessage(TextFormat::PURPLE . "EnderTeams Help Page 1 of 3" . TextFormat::RED . "\n/t about\n/t accept\n/t claim\n/t create <name>\n/t del\n/t demote <player>\n/t deny");
 							return true;
 						}
 						if($args[1] == 2) {
-							$sender->sendMessage(TextFormat::PURPLE . "EnderFactions Help Page 2 of 3" . TextFormat::RED . "\n/f home\n/f help <page>\n/f info\n/f info <faction>\n/f invite <player>\n/f kick <player>\n/f leader <player>\n/f leave");
+							$sender->sendMessage(TextFormat::PURPLE . "EnderTeams Help Page 2 of 3" . TextFormat::RED . "\n/t home\n/t help <page>\n/t info\n/t info <faction>\n/t invite <player>\n/t kick <player>\n/t leader <player>\n/t leave");
 							return true;
 						} else {
-							$sender->sendMessage(TextFormat::PURPLE . "EnderFactions Help Page 3 of 3" . TextFormat::RED . "\n/f motd\n/f promote <player>\n/f sethome\n/f unclaim\n/f unsethome");
+							$sender->sendMessage(TextFormat::PURPLE . "EnderTeams Help Page 3 of 3" . TextFormat::RED . "\n/t motd\n/t promote <player>\n/t sethome\n/t unclaim\n/t unsethome");
 							return true;
 						}
 					}
@@ -554,7 +554,7 @@ class FactionCommands {
 					/////////////////////////////// ABOUT ///////////////////////////////
 					
 					if(strtolower($args[0] == 'about')) {
-						$sender->sendMessage(TextFormat::BLUE . "EnderFactions v1.4.0 BETA";
+						$sender->sendMessage(TextFormat::PURPLE . "EnderTeams v1.4.0 BETA";
 					}
 				}
 			}
