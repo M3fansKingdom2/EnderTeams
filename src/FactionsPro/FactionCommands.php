@@ -31,7 +31,7 @@ class FactionCommands {
 			$player = $sender->getPlayer()->getName();
 			if(strtolower($command->getName('t'))) {
 				if(empty($args)) {
-					$sender->sendMessage($this->plugin->formatMessage("Please use /f help for a list of commands"));
+					$sender->sendMessage($this->plugin->formatMessage("Please use /t help for a list of commands"));
 					return true;
 				}
 				if(count($args == 2)) {
