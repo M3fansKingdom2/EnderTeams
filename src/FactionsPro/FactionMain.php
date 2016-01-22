@@ -1,6 +1,6 @@
 <?php
 
-namespace EnderFactions;
+namespace EnderTeams;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
@@ -36,16 +36,16 @@ class FactionMain extends PluginBase implements Listener {
 		$this->fCommand = new FactionCommands($this);
 		
 		$this->prefs = new Config($this->getDataFolder() . "Prefs.yml", CONFIG::YAML, array(
-				"MaxFactionNameLength" => 20,
-				"MaxPlayersPerFaction" => 10,
-				"ClaimingEnabled" => true,
+				"MaxTeamNameLength" => 20,
+				"MaxPlayersPerFaction" => 5,
+				"ClaimingEnabled" => false,
 				"OnlyLeadersAndOfficersCanInvite" => true,
 				"OfficersCanClaim" => true,
 				"PlotSize" => 25,
 				"Member" => array(
 						"claim" => false,
 						"demote" => false,
-						"home" => true,
+						"home" => false,
 						"invite" => false,
 						"kick" => false,
 						"motd" => false,
@@ -55,16 +55,16 @@ class FactionMain extends PluginBase implements Listener {
 						"unsethome" => false
 				),
 				"Officer" => array(
-						"claim" => true,
+						"claim" => false,
 						"demote" => false,
-						"home" => true,
+						"home" => false,
 						"invite" => true,
 						"kick" => true,
 						"motd" => true,
 						"promote" => false,
-						"sethome" => true,
-						"unclaim" => true,
-						"unsethome" => true
+						"sethome" => false,
+						"unclaim" => false,
+						"unsethome" => false
 				)
 		));
 		$this->db = new \SQLite3($this->getDataFolder() . "EnderFactions.db");
