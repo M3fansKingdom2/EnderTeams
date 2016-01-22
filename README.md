@@ -6,7 +6,7 @@
 * Claim plots and create a dominating base
 * Three ranks: Member, Officer and Leader
 
-##Commands
+##Commands > Replace all "f" into "t" for it to Work.
 * /f about - view plugin information
 * /f accept - accept an invite
 * /f claim - claim a plot of land (two snow blocks will mark out the corners)
@@ -27,3 +27,10 @@
 * /f sethome - set your Faction's home point
 * /f unclaim - unclaim your plot
 * /f unsethome unset your Faction's home
+
+Tethered_ I'm Sorry if I Illegally Forked your Repository, It's not Open Source now,
+If you wondered how I Forked it, Before it was Close-Sourced I Forked it,
+The Reason why I Forked it is Because I wanna edit the Properties for My Server for it
+To be Better,
+
+Thanks! And Sorry !.
