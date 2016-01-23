@@ -1,4 +1,4 @@
-name: FactionsPro
+name: EnderTeams
 author: Tethered_
 description: A Plugin For Easily Managing Factions
 version: 1.4
@@ -6,9 +6,9 @@ main: FactionsPro\FactionMain
 api: [1.12.0]
 commands:
   f:
-    description: use /f help for all parameters
-    permission: f.command
+    description: use /t help for all parameters
+    permission: t.command
 permissions:
-  f.command:
+  t.command:
     default: true
     description: "Allow use of all faction commands"
