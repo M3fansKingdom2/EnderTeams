@@ -1,5 +1,5 @@
-MaxTeamNameLength: 20
-MaxPlayersPerTeam: 5
+MaxFactionNameLength: 20
+MaxPlayersPerFaction: 5
 ClaimingEnabled: false
 TeamNametags: true
 PlotSize: 25
