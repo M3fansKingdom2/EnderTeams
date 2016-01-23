@@ -124,7 +124,7 @@ class FactionListener implements Listener {
 	}
 	
 	public function onPlayerJoin(PlayerJoinEvent $event) {
-		if($this->plugin->prefs->get("TeamNametags")) {
+		if($this->plugin->prefs->get("FactionNametags")) {
 			$this->plugin->updateTag($event->getPlayer()->getName());
 		}
 	}
