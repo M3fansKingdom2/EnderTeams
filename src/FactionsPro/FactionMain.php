@@ -36,7 +36,7 @@ class FactionMain extends PluginBase implements Listener {
 		$this->fCommand = new FactionCommands($this);
 		
 		$this->prefs = new Config($this->getDataFolder() . "Prefs.yml", CONFIG::YAML, array(
-				"MaxTeamNameLength" => 20,
+				"MaxFactionNameLength" => 20,
 				"MaxPlayersPerFaction" => 5,
 				"ClaimingEnabled" => false,
 				"OnlyLeadersAndOfficersCanInvite" => true,
