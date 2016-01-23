@@ -55,7 +55,7 @@ class TeamCommands {
 							$sender->sendMessage($this->plugin->formatMessage("Team already exists"));
 							return true;
 						}
-						if(strlen($args[1]) > $this->plugin->prefs->get("MaxTeamNameLength")) {
+						if(strlen($args[1]) > $this->plugin->prefs->get("MaxFactionNameLength")) {
 							$sender->sendMessage($this->plugin->formatMessage("This name is too long. Please try again!"));
 							return true;
 						}
@@ -71,7 +71,7 @@ class TeamCommands {
 							$stmt->bindValue(":faction", $factionName);
 							$stmt->bindValue(":rank", $rank);
 							$result = $stmt->execute();
-							if($this->plugin->prefs->get("TeamNametags")) {
+							if($this->plugin->prefs->get("FactionNametags")) {
 								$this->plugin->updateTag($player);
 							}
 							$sender->sendMessage($this->plugin->formatMessage("Team successfully created!", true));
