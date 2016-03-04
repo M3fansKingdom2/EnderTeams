@@ -31,7 +31,7 @@ class TeamCommands {
 			$player = $sender->getPlayer()->getName();
 			if(strtolower($command->getName('t'))) {
 				if(empty($args)) {
-					$sender->sendMessage($this->plugin->formatMessage("Please use /t help for a list of commands"));
+					$sender->sendMessage($this->plugin->formatMessage("Please use /cf help for a list of commands"));
 					return true;
 				}
 				if(count($args == 2)) {
@@ -40,7 +40,7 @@ class TeamCommands {
 					
 					if($args[0] == "create") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /t create <team name>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /cfcreate <faction name>"));
 							return true;
 						}
 						if(!(ctype_alnum($args[1]))) {
@@ -52,7 +52,7 @@ class TeamCommands {
 							return true;
 						}
 						if($this->plugin->factionExists($args[1]) == true ) {
-							$sender->sendMessage($this->plugin->formatMessage("Team already exists"));
+							$sender->sendMessage($this->plugin->formatMessage("Faction already exists"));
 							return true;
 						}
 						if(strlen($args[1]) > $this->plugin->prefs->get("MaxFactionNameLength")) {
@@ -60,7 +60,7 @@ class TeamCommands {
 							return true;
 						}
 						if($this->plugin->isInFaction($sender->getName())) {
-							$sender->sendMessage($this->plugin->formatMessage("You must leave this team first"));
+							$sender->sendMessage($this->plugin->formatMessage("You must leave this faction first"));
 							return true;
 						} else {
 							$factionName = $args[1];
@@ -74,7 +74,7 @@ class TeamCommands {
 							if($this->plugin->prefs->get("FactionNametags")) {
 								$this->plugin->updateTag($player);
 							}
-							$sender->sendMessage($this->plugin->formatMessage("Team successfully created!", true));
+							$sender->sendMessage($this->plugin->formatMessage("Faction successfully created!", true));
 							return true;
 						}
 					}
@@ -83,11 +83,11 @@ class TeamCommands {
 					
 					if($args[0] == "invite") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /t invite <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /cf invite <player>"));
 							return true;
 						}
 						if(!$this->plugin->isInFaction($player)) {
-							$sender->sendMessage($this->plugin->formatMessage("You must be in a team to use this"));
+							$sender->sendMessage($this->plugin->formatMessage("You must be in a faction to use this"));
 							return true;
 						}
 						if(!$this->plugin->isLeader($player) && !$this->plugin->hasPermission($player, "invite")) {
@@ -119,18 +119,18 @@ class TeamCommands {
 						$result = $stmt->execute();
 
 						$sender->sendMessage($this->plugin->formatMessage("$invitedName has been invited!", true));
-						$invited->sendMessage($this->plugin->formatMessage("You have been invited to $factionName. Type '/f accept' or '/f deny' into chat to accept or deny!", true));
+						$invited->sendMessage($this->plugin->formatMessage("You have been invited to $factionName. Type '/cf accept' or '/cf deny' into chat to accept or deny!", true));
 					}
 					
 					/////////////////////////////// LEADER ///////////////////////////////
 					
 					if($args[0] == "leader") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /t leader <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /cf leader <player>"));
 							return true;
 						}
 						if(!$this->plugin->isInFaction($sender->getName())) {
-							$sender->sendMessage($this->plugin->formatMessage("You must be in a team to use this!"));
+							$sender->sendMessage($this->plugin->formatMessage("You must be in a faction to use this!"));
 							return true;
 						}
 						if(!$this->plugin->isLeader($player)) {
@@ -173,11 +173,11 @@ class TeamCommands {
 					
 					if($args[0] == "promote") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /t promote <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /cf promote <player>"));
 							return true;
 						}
 						if(!$this->plugin->isInFaction($sender->getName())) {
-							$sender->sendMessage($this->plugin->formatMessage("You must be in a team to use this!"));
+							$sender->sendMessage($this->plugin->formatMessage("You must be in a faction to use this!"));
 							return true;
 						}
 						if(!$this->plugin->isLeader($player) && !$this->plugin->hasPermission($player, "promote")) {
@@ -185,7 +185,7 @@ class TeamCommands {
 							return true;
 						}
 						if($this->plugin->getPlayerFaction($player) != $this->plugin->getPlayerFaction($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Player is not in this team!"));
+							$sender->sendMessage($this->plugin->formatMessage("Player is not in this faction!"));
 							return true;
 						}
 						if($this->plugin->isOfficer($args[1])) {
@@ -212,11 +212,11 @@ class TeamCommands {
 					
 					if($args[0] == "demote") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /t demote <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /cf demote <player>"));
 							return true;
 						}
 						if($this->plugin->isInFaction($sender->getName()) == false) {
-							$sender->sendMessage($this->plugin->formatMessage("You must be in a team to use this!"));
+							$sender->sendMessage($this->plugin->formatMessage("You must be in a faction to use this!"));
 							return true;
 						}
 						if(!$this->plugin->isLeader($player) && !$this->plugin->hasPermission($player, "demote")) {
@@ -252,7 +252,7 @@ class TeamCommands {
 					
 					if($args[0] == "kick") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /t kick <player>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /cf kick <player>"));
 							return true;
 						}
 						if($this->plugin->isInFaction($sender->getName()) == false) {
@@ -318,14 +318,14 @@ class TeamCommands {
 					}
 					if(strtolower($args[0]) == "help") {
 						if(!isset($args[1]) || $args[1] == 1) {
-							$sender->sendMessage(TextFormat::PURPLE . "EnderTeams Help Page 1 of 3" . TextFormat::RED . "\n/t about\n/t accept\n/t claim\n/t create <name>\n/t del\n/t demote <player>\n/t deny");
+							$sender->sendMessage(TextFormat::PURPLE . "CoronaFaction Help Page 1 of 3" . TextFormat::RED . "\n/cf about\n/cf accept\n/cf claim\n/cf create <name>\n/cf del\n/cf demote <player>\n/cf deny");
 							return true;
 						}
 						if($args[1] == 2) {
-							$sender->sendMessage(TextFormat::PURPLE . "EnderTeams Help Page 2 of 3" . TextFormat::RED . "\n/t home\n/t help <page>\n/t info\n/t info <faction>\n/t invite <player>\n/t kick <player>\n/t leader <player>\n/t leave");
+							$sender->sendMessage(TextFormat::PURPLE . "CoronaFaction Help Page 2 of 3" . TextFormat::RED . "\n/cf home\n/cf help <page>\n/cf info\n/cf info <faction>\n/cf invite <player>\n/cf kick <player>\n/cf leader <player>\n/t leave");
 							return true;
 						} else {
-							$sender->sendMessage(TextFormat::PURPLE . "EnderTeams Help Page 3 of 3" . TextFormat::RED . "\n/t motd\n/t promote <player>\n/t sethome\n/t unclaim\n/t unsethome");
+							$sender->sendMessage(TextFormat::PURPLE . "CoronaFaction Help Page 3 of 3" . TextFormat::RED . "\n/t motd\n/t promote <player>\n/t sethome\n/t unclaim\n/t unsethome");
 							return true;
 						}
 					}
