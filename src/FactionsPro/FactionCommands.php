@@ -29,7 +29,7 @@ class TeamCommands {
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
 		if($sender instanceof Player) {
 			$player = $sender->getPlayer()->getName();
-			if(strtolower($command->getName('t'))) {
+			if(strtolower($command->getName('cf'))) {
 				if(empty($args)) {
 					$sender->sendMessage($this->plugin->formatMessage("Please use /cf help for a list of commands"));
 					return true;
