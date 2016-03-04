@@ -40,7 +40,7 @@ class TeamCommands {
 					
 					if($args[0] == "create") {
 						if(!isset($args[1])) {
-							$sender->sendMessage($this->plugin->formatMessage("Usage: /cfcreate <faction name>"));
+							$sender->sendMessage($this->plugin->formatMessage("Usage: /cf create <faction name>"));
 							return true;
 						}
 						if(!(ctype_alnum($args[1]))) {
