@@ -554,7 +554,7 @@ class TeamCommands {
 					/////////////////////////////// ABOUT ///////////////////////////////
 					
 					if(strtolower($args[0] == 'about')) {
-						$sender->sendMessage(TextFormat::PURPLE . "EnderTeams v1.4.0 BETA";
+						$sender->sendMessage(TextFormat::PURPLE . "CoronaServer v1.4.0 BETA";
 					}
 				}
 			}
